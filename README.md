@@ -27,7 +27,7 @@ git checkout master
 ## Merge the temporary branch into the app directory and delete temporary branch
 
 ```shell
-git merge -X subtree=app/lib --squash tmp-branch --allow-unrelated-histories
+git merge -X subtree=app/lib tmp-branch --squash --allow-unrelated-histories
 git branch -D tmp-branch
 ```
 
