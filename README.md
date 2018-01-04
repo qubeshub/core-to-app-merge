@@ -49,6 +49,8 @@ git subtree split -P core/lib -b core/lib
 git subtree add --prefix=app/lib core/lib
 ```
 
+*Note*: I have to do a `git status` in between these two commands, otherwise I get the statement `Working tree has modifications.  Cannot add.`  <shrug>
+
 These two commands are all you need when you want to merge core to app:
 ```shell
 git subtree split -P core/lib -b core/lib
