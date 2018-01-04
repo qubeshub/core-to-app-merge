@@ -46,7 +46,7 @@ This command will create the app library from the core library (assume for now t
 
 ```shell
 git subtree split -P core/lib -b core/lib
-git subtree add --prefix=app/lib core/lib
+git subtree add --squash --prefix=app/lib core/lib
 ```
 
 *Note*: I have to do a `git status` in between these two commands, otherwise I get the statement `Working tree has modifications.  Cannot add.`  <shrug>
@@ -54,7 +54,7 @@ git subtree add --prefix=app/lib core/lib
 These two commands are all you need when you want to merge core to app:
 ```shell
 git subtree split -P core/lib -b core/lib
-git subtree merge --prefix=app/lib --squash core/lib
+git subtree merge --squash --prefix=app/lib core/lib
 ```
 
 The `git subtree split` command will update the branch, and the `git subtree merge` will perform the merge.
@@ -67,12 +67,12 @@ There's a nifty way to set everything up without having to redo the commits.  As
 git subtree split -P app/lib -b app/lib
 git rm -r app/lib
 git commit -m "[APP] Temp removal"
-git subtree add --prefix=app/lib core/lib
+git subtree add --squash --prefix=app/lib core/lib
 git merge -Xsubtree=app/lib app/lib --allow-unrelated-histories
 git branch -D app/lib
 ```
 
-What this does is (1) create a temporary app/lib branch with the app/lib code, (2) remove the directory and (2.5) commit removal, (3) create the subtree for the app/lib directory, (4) merge in the app/lib changes on top of the core/lib code (no squash this time to keep commit history), and (5) delete the temporary app/lib branch.
+What this does is (1) create a temporary app/lib branch with the app/lib code, (2) remove the directory and (2.5) commit removal, (3) create the subtree for the app/lib directory (squash commits to avoid duplicates from core), (4) merge in the app/lib changes on top of the core/lib code (no squash this time to keep commit history), and (5) delete the temporary app/lib branch.
 
 You can now proceed as though you knew what you were doing from the start!
 
@@ -91,6 +91,8 @@ git rebase -i --root core/lib
 ```
 
 In the interactive rebase, you only need to set the "one commit" to `squash`, and **boom** you now have a tree with one commit, and it won't span the entire history to the initial commit to the `core/lib` codebase.  Note that you will definitely have to delete the `core/lib` branch at this stage as `git subtree split` can't update the branch anymore.
+
+**NOTE**:  This section is silly - just realized that if I just added `--squash` to most `subtree add` and `subtree merge` commands in the previous sections, it would take care of these issues.  Leaving this here as a reference for my brain regarding `rebase` and `reset`, two very useful commands.
 
 # Final thoughts and references
 
