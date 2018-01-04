@@ -78,6 +78,8 @@ You can now proceed as though you knew what you were doing from the start!
 
 # Is there a manual/subtree love child?
 
+**NOTE**:  This section is silly - just realized that if I just added `--squash` to most `subtree add` and `subtree merge` commands in the previous sections, it would take care of these issues.  Leaving this here as a reference for my brain regarding `rebase` and `reset`, two very useful commands.
+
 So, can we have our cake and eat it too?  In other words, the awesome merging power of subtrees with the beautiful clean git histories of the manual technique.  One of the problems is that the "ghost" branch created for a subtree merge contains ALL of the subtree history, including commits.  
 
 In the newly created `core/lib` branch:
@@ -91,8 +93,6 @@ git rebase -i --root core/lib
 ```
 
 In the interactive rebase, you only need to set the "one commit" to `squash`, and **boom** you now have a tree with one commit, and it won't span the entire history to the initial commit to the `core/lib` codebase.  Note that you will definitely have to delete the `core/lib` branch at this stage as `git subtree split` can't update the branch anymore.
-
-**NOTE**:  This section is silly - just realized that if I just added `--squash` to most `subtree add` and `subtree merge` commands in the previous sections, it would take care of these issues.  Leaving this here as a reference for my brain regarding `rebase` and `reset`, two very useful commands.
 
 # Final thoughts and references
 
