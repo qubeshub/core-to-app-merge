@@ -61,11 +61,11 @@ The `git subtree split` command will update the branch, and the `git subtree mer
 
 ## What if my app directory already exists, like in this repo?
 
-There's a nifty way to set everything up without having to redo the commits.  
+There's a nifty way to set everything up without having to redo the commits.  Assuming the `core/lib` subtree already exists:
 
 ```shell
 git subtree split -P app/lib -b app/lib
-git rm -r app/lib
+git rm -r app/lib; git commit -m "[APP] Temp removal"
 git subtree add --prefix=app/lib core/lib
 git subtree merge --prefix=app/lib app/lib 
 git branch -D app/lib
