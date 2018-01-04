@@ -44,6 +44,7 @@ The steps above are manual, and while they have the benefit if leaving a clean t
 This command will create the app library from the core library:
 
 ```shell
+git subtree split -P core/lib -b core/lib
 git subtree add --prefix=app/lib core/lib
 ```
 
