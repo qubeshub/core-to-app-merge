@@ -36,6 +36,7 @@ git branch -D tmp-branch
  * The `--squash` command is used to avoid duplicate commits in the tree (one from core and one from the merge into app)
  * The `--allow-unrelated-histories` is necessary for this to work
  * This keeps the main tree really clean!  All you will see is one commit for the core -> app merge.
+ * A rather large cost of going manual, even though you get a clean tree, is the need to do address a lot more conflicts (for some reason).  The subtree strategy below addresses this - far fewer conflicts on merge, with a slightly more complicated tree.  **I'm inclined to say it's worth it, and will most likely use the subtree strategy below.**
 
 # Alternate strategy using subtrees
 
