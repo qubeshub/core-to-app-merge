@@ -67,10 +67,10 @@ There's a nifty way to set everything up without having to redo the commits.
 git subtree split -P app/lib -b app/lib
 git rm -r app/lib
 git subtree add --prefix=app/lib core/lib
-git subtree merge --prefix=app/lib --squash app/lib 
+git subtree merge --prefix=app/lib app/lib 
 git branch -D app/lib
 ```
 
-What this does is (1) create a temporary app/lib branch with the app/lib code, (2) remove the directory, (3) create the subtree for the app/lib directory, (4) merge in the app/lib changes on top of the core/lib code, and (5) delete the temporary app/lib branch.
+What this does is (1) create a temporary app/lib branch with the app/lib code, (2) remove the directory, (3) create the subtree for the app/lib directory, (4) merge in the app/lib changes on top of the core/lib code (no squash this time to keep commit history), and (5) delete the temporary app/lib branch.
 
 You can now proceed as though you knew what you were doing from the start!
