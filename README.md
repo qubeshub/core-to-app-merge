@@ -68,7 +68,7 @@ git subtree split -P app/lib -b app/lib
 git rm -r app/lib
 git commit -m "[APP] Temp removal"
 git subtree add --prefix=app/lib core/lib
-git subtree merge --prefix=app/lib app/lib 
+git merge -Xsubtree=app/lib app/lib --allow-unrelated-histories
 git branch -D app/lib
 ```
 
