@@ -74,3 +74,14 @@ git branch -D app/lib
 What this does is (1) create a temporary app/lib branch with the app/lib code, (2) remove the directory, (3) create the subtree for the app/lib directory, (4) merge in the app/lib changes on top of the core/lib code (no squash this time to keep commit history), and (5) delete the temporary app/lib branch.
 
 You can now proceed as though you knew what you were doing from the start!
+
+# Final thoughts and references
+
+It would be interesting to check out [git-subrepo](https://github.com/ingydotnet/git-subrepo) in the future.
+
+A lot of this information is based on the blog post ["Mastering Git subtrees"](https://medium.com/@porteneuve/mastering-git-subtrees-943d29a798ec) by [Christophe Porteneuve](https://medium.com/@porteneuve).
+
+Other links on git subtrees:
+ * [Git Tools - Subtree Merging](https://git-scm.com/book/en/v1/Git-Tools-Subtree-Merging)
+ * [StackOverflow comment discussing git subtrees](https://stackoverflow.com/a/32684526/8663034)
+ * [Useful trick for modifying commit messages when adding a subtree](https://davidwalsh.name/update-git-commit-messages) (this is not specifically subtree related, but if you want your commits to have different info when merged into the new repo, this is an invaluable trick using `git filter-branch`)
