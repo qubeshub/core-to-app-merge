@@ -1,5 +1,0 @@
-// Section A
-The quick brown fox jumped over the lazy dog.
-
-// Section B
-Lorem ipsum and all that jazz.
